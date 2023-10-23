@@ -6,6 +6,8 @@ var money = 200;
 //Array of enemy names 
 var enemyNames = ["Alpha", "Omega", "Gamma"];
 console.log(enemyNames); 
+enemyAttack = 20
+enemyHealth =160 
 
 // for([initial expression]; [condition]; [increment expression]) {statement}
 for(var i = 0; i < enemyNames.length; i++){
@@ -13,7 +15,7 @@ for(var i = 0; i < enemyNames.length; i++){
 }
  
 // function to run a battle
-function fight() {
+var fight = function(enemyName) {
   // Alert to the player welcoming them to the start of the game
   alert("Welcome to the Battle Bots Grand Royal " + player);
 
@@ -30,7 +32,7 @@ function fight() {
 
     //Player interaction with enemy
     console.log((playerHealth = playerHealth - enemyAttack));
-    alert(enemy + " attacked " + player + " !");
+    alert(enemyNames + " attacked " + player + " !");
 
     // Check health of player
     if (playerHealth <= 0) {
@@ -82,6 +84,6 @@ function fight() {
 } //end of fight function
 
 // start button- this is needed to start the fight function( Code is like building a machine and hitting the start button at the end )
-// fight();
+ fight();
 
 
