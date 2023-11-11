@@ -5,14 +5,12 @@ var money = 200;
 
 //Array of enemy names 
 var enemyNames = ["Alpha", "Omega", "Gamma"];
+// var greatOne = "Sable"
 console.log(enemyNames); 
 enemyAttack = 20
 enemyHealth =160 
 
-// for([initial expression]; [condition]; [increment expression]) {statement}
-for(var i = 0; i < enemyNames.length; i++){
-  console.log(enemyNames[i]);
-}
+
  
 // function to run a battle
 var fight = function(enemyName) {
@@ -28,11 +26,11 @@ var fight = function(enemyName) {
     promptFight === "Fight" ||
     promptFight === "Fight"
   ) {
-    console.log(promptFight);
+    // console.log(promptFight);
 
     //Player interaction with enemy
     console.log((playerHealth = playerHealth - enemyAttack));
-    alert(enemyNames + " attacked " + player + " !");
+    alert(enemyName + " attacked " + player + " !");
 
     // Check health of player
     if (playerHealth <= 0) {
@@ -45,13 +43,13 @@ var fight = function(enemyName) {
 
     // Enemy interaction with player
     console.log((enemyHealth = enemyHealth - playerAttack));
-    alert(player + " attacked " + enemy + " !");
+    console.log(player + " attacked " + enemyName + " !");
 
     // Check health of enemy
     if (enemyHealth <= 0) {
-      alert(enemy + " EXPLODED !");
+      console.log(enemyName + " EXPLODED !");
     } else {
-      alert(enemy + " is not going down !");
+     console.log(enemyName + " is not going down !");
     }
     console.log(enemyHealth);
   }
@@ -81,9 +79,21 @@ var fight = function(enemyName) {
   } else {
     alert("Make a valid choice! Are you in or are you out ?");
   }
-} //end of fight function
+}; //end of fight function
 
-// start button- this is needed to start the fight function( Code is like building a machine and hitting the start button at the end )
- fight();
+// for([initial expression]; [condition]; [increment expression]) {statement}
+// for(var i = 0; i < enemyNames.length; i++){
+//   console.log(enemyNames[i]);
+//   console.log(i);
+//   console.log(enemyNames[i] + " is at " + i + "index"); 
+// }
+
+// var goons = enemyNames[i];
+
+// // start button- this is needed to start the fight function( Code is like building a machine and hitting the start button at the end )
+// Calls the fight function multiple times with a new fighter each times
+for(var i=0; i< enemyNames.length; i++) {
+  fight(enemyNames[i]);
+}
 
 
