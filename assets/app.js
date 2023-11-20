@@ -7,17 +7,43 @@ var money = 200;
 var enemyNames = ["Alpha", "Omega", "Gamma"];
 // var greatOne = "Sable"
 console.log(enemyNames);
-enemyAttack = 25;
+enemyAttack = 200;
 // enemyHealth = 100;
 
 // function to run a battle
 var fight = function (enemyName) {
-  while (enemyHealth > 0) {
+  // 
+  while (playerHealth > 0 && enemyHealth >0 ) {
     // Alert to the player welcoming them to the start of the game
     // alert("Welcome to the Battle Bots Grand Royal " + player);
 
     //Window prompt that gathers player's choice to fight or skip the fight
     var promptFight = window.prompt("Would you like to Fight or Skip");
+
+    // If player choses to skip
+   if (
+    promptFight === "skip" ||
+    promptFight === "SKIP" ||
+    promptFight === "Skip"
+  ) {
+    var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+
+    // if yes(true), leave fight
+    if (confirmSkip) {
+      
+      alert(player + " has chosen to avoid this battle ");
+      //Money was subtracted
+      money = money - 20;
+      alert(
+        player + " has payed a fine. " + player + " has " + money + " remaing"
+      );
+      //Break must be at the bottom of the conditional 
+      break;
+    }
+    //if no (false), ask question again by running fight() again
+    else {
+      fight();
+    }
 
     // Security Check- If Else statments to show how the code will executed dependent of the players choice
     if (
@@ -39,7 +65,9 @@ var fight = function (enemyName) {
         console.log(player + " has died ");
         alert(
           "Death is not a hunter unbeknownst to its prey. One is always aware that it lies in wait. Though life is merely a journey to the grave, it must not be undertaken without hope."
-        );
+        
+          );
+          break;
       } else {
         console.log(player + " survived");
         alert(player + " is still in the battle");
@@ -60,29 +88,10 @@ var fight = function (enemyName) {
         console.log(enemyName + " is not going down !");
       }
       console.log(enemyHealth);
+      break;
     }
 
-    // If player choses to skip
-    else if (
-      promptFight === "skip" ||
-      promptFight === "SKIP" ||
-      promptFight === "Skip"
-    ) {
-      var confirmSkip = window.confirm("Are you sure you'd like to quit?");
-
-      // if yes(true), leave fight
-      if (confirmSkip) {
-        alert(player + " has chosen to avoid this battle ");
-        //Money was subtracted
-        money = money - 20;
-        alert(
-          player + " has payed a fine. " + player + " has " + money + " remaing"
-        );
-      }
-      //if no (false), ask question again by running fight() again
-      else {
-        fight();
-      }
+    
       // if player did not chose the first or second option in the initial prompt
     } else {
       alert("Make a valid choice! Are you in or are you out ?");
