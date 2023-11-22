@@ -1,18 +1,17 @@
 var player = window.prompt("What is your robot's name ?");
 var playerHealth = 100;
-var playerAttack = 25;
+var playerAttack = 50;
 var money = 200;
 
 //Array of enemy names
 var enemyNames = ["Alpha", "Omega", "Gamma"];
 // var greatOne = "Sable"
 console.log(enemyNames);
-enemyAttack = 200;
-// enemyHealth = 100;
+enemyAttack = 10;
+enemyHealth = 100;
 
 // function to run a battle
 var fight = function (enemyName) {
-  // 
   while (playerHealth > 0 && enemyHealth >0 ) {
     // Alert to the player welcoming them to the start of the game
     // alert("Welcome to the Battle Bots Grand Royal " + player);
@@ -40,17 +39,18 @@ var fight = function (enemyName) {
       //Break must be at the bottom of the conditional 
       break;
     }
-    //if no (false), ask question again by running fight() again
-    else {
-      fight();
-    }
+  }
+    // //if no (false), ask question again by running fight() again
+    // else {
+    //   fight();
+    // }
 
     // Security Check- If Else statments to show how the code will executed dependent of the players choice
-    if (
-      promptFight === "fight" ||
-      promptFight === "Fight" ||
-      promptFight === "Fight"
-    ) {
+    // if (
+    //   promptFight === "fight" ||
+    //   promptFight === "Fight" ||
+    //   promptFight === "Fight"
+    // ) {
       // console.log(promptFight);
 
       //Player interaction with enemy
@@ -71,9 +71,7 @@ var fight = function (enemyName) {
       } else {
         console.log(player + " survived");
         alert(player + " is still in the battle");
-      }
-
-      // Enemy interaction with player
+        // Enemy interaction with player
 
       alert(player + " attacked " + enemyName + " !");
       console.log(player + " attacked " + enemyName + " !");
@@ -84,20 +82,27 @@ var fight = function (enemyName) {
       // Check health of enemy
       if (enemyHealth <= 0) {
         console.log(enemyName + " EXPLODED !");
+        alert(enemyName + " EXPLODED !");
       } else {
         console.log(enemyName + " is not going down !");
+        alert(enemyName + " is not going down !");
       }
       console.log(enemyHealth);
       break;
     }
 
+      
+    }// end of while loop
+  }//end of the fight function 
+
+      
     
-      // if player did not chose the first or second option in the initial prompt
-    } else {
-      alert("Make a valid choice! Are you in or are you out ?");
-    }
-  } //end of fight function
-};
+//       // if player did not chose the first or second option in the initial prompt
+//     } else {
+//       alert("Make a valid choice! Are you in or are you out ?");
+//     }
+//   } //end of fight function
+// };
 
 // for([initial expression]; [condition]; [increment expression]) {statement}
 // for(var i = 0; i < enemyNames.length; i++){
@@ -113,7 +118,15 @@ var fight = function (enemyName) {
 //enemyHealth variable within the for loop allows to reset the health for a new robot added
 for (var i = 0; i < enemyNames.length; i++) {
   // debugger;
-  pickedEnemyName = enemyNames[i];
-  enemyHealth = 50;
+  if (playerHealth >0) {
+    alert(" Welcome to the Rumble! Round " + (i + 1)); 
+  }
+
+  else {
+    window.alert("You have lost your robot in battle! Game Over!");
+    break;
+  }
+  var pickedEnemyName = enemyNames[i];
+  enemyHealth = 100;
   fight(pickedEnemyName);
 }
